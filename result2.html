@@ -7,42 +7,46 @@
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #ffffff;
     margin: 0;
+    background: white;
 }
 
-/* watermark */
+/* Watermark */
 body::before {
     content: "Directorate of Education Delhi";
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-30deg);
-    font-size: 60px;
-    color: rgba(128,0,128,0.15);
+    font-size: 65px;
+    color: rgba(128, 0, 128, 0.15);
+    white-space: nowrap;
     z-index: 0;
 }
 
-.header, .info, table, .disclaimer, .print-btn {
+.container {
     position: relative;
     z-index: 1;
+    width: 95%;
+    margin: auto;
 }
 
 .header {
     text-align: center;
+    margin-top: 15px;
     font-size: 18px;
-    margin-top: 20px;
+    font-weight: bold;
 }
 
 .info {
-    width: 90%;
-    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
     font-size: 14px;
 }
 
 table {
-    width: 90%;
-    margin: auto;
+    width: 100%;
     border-collapse: collapse;
     font-size: 13px;
 }
@@ -53,26 +57,24 @@ th, td {
     text-align: center;
 }
 
-.left { text-align: left; }
-
-.result-box {
-    font-weight: bold;
+.left {
+    text-align: left;
 }
 
 .disclaimer {
-    width: 90%;
-    margin: 20px auto;
+    color: blue;
     font-size: 13px;
-    color: #0033cc;
+    margin-top: 20px;
 }
 
 .print-btn {
+    margin: 15px auto;
     display: block;
-    margin: 20px auto;
     padding: 8px 20px;
     background: #2e6da4;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 @media print {
@@ -83,19 +85,26 @@ th, td {
 
 <body>
 
+<div class="container">
+
 <div class="header">
-<b>Directorate of Education, Govt. of NCT of Delhi</b><br>
+Directorate of Education, Govt. of NCT of Delhi<br>
 Result Information Academic Session: 2025-26
 </div>
 
 <div class="info">
-<b>Student Name:</b> SAVAN<br>
-<b>School Name:</b> Karala-GBSSS<br><br>
-
-<b>Student Id:</b> 67890 &nbsp;&nbsp;&nbsp;
-<b>Class:</b> IX &nbsp;&nbsp;&nbsp;
-<b>Section:</b> E
+<div>
+<b>Student Name:</b> PINTU KUMAR SHARMA<br>
+<b>School Name:</b> Karala-GBSSS
 </div>
+
+<div>
+<b>Student Id:</b> 20220225681<br>
+<b>Class:</b> IX &nbsp;&nbsp; <b>Section:</b> A
+</div>
+</div>
+
+<h4 align="center">Examination:- Scholastic Areas</h4>
 
 <table>
 <tr>
@@ -105,31 +114,58 @@ Result Information Academic Session: 2025-26
 <th>IA/Project</th>
 <th>Grand Total</th>
 <th>Grade</th>
+<th>Result</th>
 </tr>
 
-<!-- Adjusted marks ≈ 59% -->
-
-<tr><td class="left">English</td><td>38</td><td>0</td><td>15</td><td>53</td><td>C1</td></tr>
-<tr><td class="left">Hindi</td><td>40</td><td>0</td><td>15</td><td>55</td><td>C1</td></tr>
-<tr><td class="left">Mathematics</td><td>36</td><td>0</td><td>14</td><td>50</td><td>C2</td></tr>
-<tr><td class="left">Science</td><td>37</td><td>0</td><td>14</td><td>51</td><td>C2</td></tr>
-<tr><td class="left">Social Science</td><td>39</td><td>0</td><td>15</td><td>54</td><td>C1</td></tr>
-<tr><td class="left">Sanskrit</td><td>38</td><td>0</td><td>14</td><td>52</td><td>C1</td></tr>
+<!-- Adjusted marks ≈62% -->
 
 <tr>
-<td colspan="5"></td>
-<td class="result-box">PASS</td>
+<td class="left">English (Lang and Lit)</td>
+<td>45</td><td>0</td><td>18</td><td>63</td><td>B2</td><td rowspan="7">Pass</td>
 </tr>
+
+<tr>
+<td class="left">Hindi A</td>
+<td>42</td><td>0</td><td>17</td><td>59</td><td>C1</td>
+</tr>
+
+<tr>
+<td class="left">Mathematics</td>
+<td>40</td><td>0</td><td>16</td><td>56</td><td>C1</td>
+</tr>
+
+<tr>
+<td class="left">Science</td>
+<td>43</td><td>0</td><td>17</td><td>60</td><td>B2</td>
+</tr>
+
+<tr>
+<td class="left">Social Science</td>
+<td>44</td><td>0</td><td>18</td><td>62</td><td>B2</td>
+</tr>
+
+<tr>
+<td class="left">Retail</td>
+<td>48</td><td>40</td><td>0</td><td>88</td><td>A2</td>
+</tr>
+
+<tr>
+<td class="left">Sanskrit</td>
+<td>42</td><td>0</td><td>17</td><td>59</td><td>C1</td>
+</tr>
+
 </table>
 
 <div class="disclaimer">
-1. This cannot be treated as original mark sheets.<br>
-2. Original mark sheets will be issued by school.<br>
-3. Errors if any are not responsibility of board.<br>
-4. For immediate information only.
+1. This cannot be treated as original mark sheets and not for admission purpose.<br>
+2. Original Printed Mark Sheets (Performance Profile) will be issued by the school separately.<br>
+3. Neither MIS Team nor Examination Branch, DoE, Delhi is responsible for any error.<br>
+4. Results are for immediate information to students & parents.
 </div>
 
 <button class="print-btn" onclick="window.print()">Print</button>
 
+</div>
+
 </body>
-</html>
+    </html>
