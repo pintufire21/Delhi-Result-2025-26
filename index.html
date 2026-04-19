@@ -3,224 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peter | Digital Entity</title>
+    <title>XYRAN | Next-Gen AI System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;600&display=swap');
 
         :root {
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --glow: rgba(255, 255, 255, 0.1);
+            --cyan: #00f2ff;
+            --violet: #8a2be2;
+            --bg: #030303;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #050505;
-            color: #fff;
+            background-color: var(--bg);
+            color: #fafafa;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        /* Animated Mesh Gradient Background */
-        .mesh-bg {
+        .tech-font { font-family: 'Michroma', sans-serif; }
+
+        /* Premium Nebula Background */
+        .nebula {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 40%);
+            z-index: -1;
+            filter: blur(80px);
+            animation: nebula-float 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes nebula-float {
+            from { transform: scale(1); }
+            to { transform: scale(1.2) translate(2%, 2%); }
+        }
+
+        /* Glassmorphism Implementation */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Scanline HUD Effect */
+        .scanline {
+            position: absolute;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 0% 0%, #1a1a1a 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, #0a0a0a 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
-        }
-
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
-        }
-
-        /* Glassmorphism Classes */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px) scale(1.01);
-        }
-
-        /* Premium Text Effects */
-        .premium-gradient {
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .pfp-ring {
-            position: relative;
-            padding: 4px;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            border-radius: 50%;
-            animation: rotate 4s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Interactive Music Visualizer Lookalike */
-        .bar {
-            width: 3px;
-            height: 10px;
-            background: #fff;
-            margin: 0 1px;
-            border-radius: 10px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { height: 5px; opacity: 0.3; }
-            50% { height: 20px; opacity: 1; }
-        }
-
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #fff;
-            border-radius: 50%;
-            position: fixed;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 242, 255, 0.02) 50%
+            );
+            background-size: 100% 4px;
             pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
+            z-index: 10;
+        }
+
+        /* Entrance Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: reveal-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes reveal-in {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+
+        /* Glow Accents */
+        .glow-text-cyan { text-shadow: 0 0 15px rgba(0, 242, 255, 0.5); }
+        .glow-text-violet { text-shadow: 0 0 15px rgba(138, 43, 226, 0.5); }
+        
+        .pulse {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.5; }
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-6">
+<body class="antialiased">
+    <div class="nebula"></div>
+    <div class="scanline"></div>
 
-    <div class="mesh-bg"></div>
-    <div class="blob"></div>
-    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto reveal">
+        <div class="tech-font text-xl tracking-tighter font-bold text-white">XYRAN<span class="text-cyan-400">.</span></div>
+        <div class="flex gap-6 text-xs tech-font text-gray-400 uppercase tracking-widest">
+            <a href="#" class="hover:text-cyan-400 transition-colors">Core</a>
+            <a href="#" class="hover:text-violet-400 transition-colors">Evolution</a>
+            <a href="#" class="px-4 py-1 border border-white/10 rounded-full hover:bg-white/5">Access OS</a>
+        </div>
+    </nav>
 
-    <main class="w-full max-w-lg space-y-8 text-center">
-        
-        <header class="flex flex-col items-center space-y-4">
-            <div class="pfp-ring">
-                <div class="bg-[#050505] rounded-full p-1">
-                    <img src="https://media.giphy.com/media/pfp.gif" alt="Peter" 
-                         class="w-24 h-24 rounded-full object-cover"
-                         onerror="this.src='https://ui-avatars.com/api/?name=P&background=111&color=fff'">
-                </div>
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <header class="text-center mb-24 reveal stagger-1">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] tech-font text-gray-400 mb-6 uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 pulse"></span>
+                Inaugural Sequence Active
             </div>
-            
-            <div class="space-y-1">
-                <h1 class="text-4xl font-extrabold tracking-tighter premium-gradient">Peter</h1>
-                <p class="text-sm text-gray-500 font-medium tracking-widest uppercase">Digital Creator • Designer</p>
-            </div>
-
-            <div class="glass-card px-4 py-2 rounded-full inline-flex items-center space-x-2 text-xs text-gray-400">
-                <span class="flex space-x-1">
-                    <div class="bar" style="animation-delay: 0.1s"></div>
-                    <div class="bar" style="animation-delay: 0.3s"></div>
-                    <div class="bar" style="animation-delay: 0.2s"></div>
-                </span>
-                <span>"We never truly value a moment until it becomes a memory"</span>
-            </div>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6 tech-font italic">
+                Beyond <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">Interface.</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Inspired by the legendary fluidity of systems like JARVIS and FRIDAY, Xyran is the beginning of a truly personal AI ecosystem.
+            </p>
         </header>
 
-        <section class="grid grid-cols-1 gap-4">
+        <div class="grid md:grid-cols-2 gap-8 mb-24">
             
-            <a href="https://youtube.com/@yapx" target="_blank" class="glass-card group p-4 rounded-2xl flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-red-600/20 transition-colors">
-                        <i class="fab fa-youtube text-xl"></i>
+            <div class="glass-panel p-10 reveal stagger-2 group">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="p-4 rounded-2xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-gray-200">YouTube Channel</h3>
-                        <p class="text-xs text-gray-500">Subscribe for creative content</p>
-                    </div>
+                    <span class="text-[10px] tech-font text-cyan-400/50 tracking-widest uppercase">Designation: Core</span>
                 </div>
-                <i class="fas fa-arrow-up-right-from-square text-gray-600 group-hover:text-white transition-colors"></i>
-            </a>
-
-            <a href="#" class="glass-card group p-4 rounded-2xl flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-gray-200">@yapx</h3>
-                        <p class="text-xs text-gray-500">Latest updates & thoughts</p>
-                    </div>
-                </div>
-                <i class="fas fa-arrow-up-right-from-square text-gray-600 group-hover:text-white transition-colors"></i>
-            </a>
-
-            <div class="glass-card p-6 rounded-3xl text-left space-y-4">
-                <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-lg">Epic Frame Edits</h3>
-                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded text-gray-300 uppercase tracking-tighter">Agency</span>
-                </div>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Elevating brands through high-end cinematography, web development, and futuristic motion graphics.
+                <h2 class="text-3xl font-bold tech-font mb-4 glow-text-cyan text-white">XANDRA</h2>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    The cognitive engine. Built to help you think, create, and solve problems through natural conversation. Xandra acts as your personal intelligent companion, adapting to your needs in real time.
                 </p>
-                <div class="flex -space-x-2">
-                    <div class="w-8 h-8 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center text-[10px]">JS</div>
-                    <div class="w-8 h-8 rounded-full border-2 border-black bg-gray-700 flex items-center justify-center text-[10px]">AI</div>
-                    <div class="w-8 h-8 rounded-full border-2 border-black bg-gray-600 flex items-center justify-center text-[10px]">FX</div>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div> Code Generation & Debugging
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div> Narrative Logic Building
+                    </div>
                 </div>
             </div>
 
-        </section>
-
-        <footer class="pt-8 opacity-40 hover:opacity-100 transition-opacity">
-            <p class="text-[10px] tracking-[0.3em] uppercase mb-4">Developed by Peter &copy; 2026</p>
-            <div class="flex justify-center space-x-6 text-lg">
-                <i class="fab fa-instagram hover:text-white cursor-pointer"></i>
-                <i class="fab fa-discord hover:text-white cursor-pointer"></i>
-                <i class="fab fa-github hover:text-white cursor-pointer"></i>
+            <div class="glass-panel p-10 reveal stagger-3 group border-violet-500/20">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="p-4 rounded-2xl bg-violet-500/10 text-violet-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="component" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-[10px] tech-font text-violet-400/50 tracking-widest uppercase">Designation: Evolution</span>
+                </div>
+                <h2 class="text-3xl font-bold tech-font mb-4 glow-text-violet text-white">XYRON</h2>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    The next phase. A more advanced, immersive evolution designed to feel less like a tool and more like a true presence. Deep interaction meets zero-latency understanding.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-violet-500"></div> Deeper System Presence
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-violet-500"></div> Immersive Context Analysis
+                    </div>
+                </div>
             </div>
-        </footer>
 
+        </div>
+
+        <section class="reveal stagger-3 text-center glass-panel py-16 px-6">
+            <h2 class="text-2xl md:text-4xl font-bold tech-font mb-6 italic">This is not just an assistant.</h2>
+            <p class="text-gray-500 tech-font text-xs tracking-[0.3em] uppercase mb-10">The Beginning of a Personal AI System</p>
+            <button class="px-10 py-4 bg-white text-black font-bold tech-font text-xs uppercase tracking-widest rounded-full hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all">
+                Initiate Sequence
+            </button>
+        </section>
     </main>
 
-    <script>
-        // Custom Cursor Movement
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+    <footer class="text-center py-12 text-gray-600 text-[10px] tech-font uppercase tracking-widest">
+        &copy; 2026 Xyran Systems // Neural-Link Enabled
+    </footer>
 
-        // Add magnetic effect to cards
-        const cards = document.querySelectorAll('.glass-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+    <script>
+        // Initialize high-end icons
+        lucide.createIcons();
+
+        // Parallax effect for cards
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-panel');
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            cards.forEach(card => {
+                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
             });
         });
     </script>
