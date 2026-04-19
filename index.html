@@ -1,208 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XYRAN | Next-Gen AI System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;600&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        :root {
-            --cyan: #00f2ff;
-            --violet: #8a2be2;
-            --bg: #030303;
-        }
+<title>XANDRA PROTOCOL</title>
 
-        body {
-            background-color: var(--bg);
-            color: #fafafa;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-        .tech-font { font-family: 'Michroma', sans-serif; }
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
 
-        /* Premium Nebula Background */
-        .nebula {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 40%);
-            z-index: -1;
-            filter: blur(80px);
-            animation: nebula-float 20s ease-in-out infinite alternate;
-        }
+body {
+  background:black;
+  overflow:hidden;
+  font-family:'Montserrat', sans-serif;
+}
 
-        @keyframes nebula-float {
-            from { transform: scale(1); }
-            to { transform: scale(1.2) translate(2%, 2%); }
-        }
+/* START SCREEN */
+#start {
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ff1a1a;
+  font-size:15px;
+  letter-spacing:2px;
+  background:rgba(0,0,0,0.9);
+  z-index:10;
+}
 
-        /* Glassmorphism Implementation */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+/* MAIN TEXT */
+#text {
+  position:absolute;
+  top:50%;
+  width:100%;
+  transform:translateY(-50%);
+  text-align:center;
+  font-size:34px;
+  color:#ffffff;
+  text-shadow:2px 0 magenta,-2px 0 cyan,0 0 20px white;
+}
 
-        .glass-panel:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+/* GLITCH */
+.glitch {
+  animation:glitch 0.2s infinite;
+}
 
-        /* Scanline HUD Effect */
-        .scanline {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(0, 242, 255, 0.02) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 10;
-        }
+/* XYRON STYLE */
+.xyron {
+  font-family:'Share Tech Mono', monospace;
+  font-size:30px;
+  color:white;
+  text-shadow:
+    2px 0 red,
+    -2px 0 red,
+    0 0 25px red;
+}
+.xyron-sub {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #ff1a1a;
+  opacity: 0.8;
+}
+#text.xyron {
+  color:white;
+  text-shadow:
+    2px 0 red,
+    -2px 0 red,
+    0 0 25px red;!important;
+}
 
-        /* Entrance Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: reveal-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
+/* FADE */
+.fade-out {
+  animation:fadeOut 1s forwards;
+}
 
-        @keyframes reveal-in {
-            to { opacity: 1; transform: translateY(0); }
-        }
+@keyframes fadeOut {
+  to { opacity:0; }
+}
 
-        .stagger-1 { animation-delay: 0.2s; }
-        .stagger-2 { animation-delay: 0.4s; }
-        .stagger-3 { animation-delay: 0.6s; }
+.fade-in {
+  animation:fadeIn 1s;
+}
 
-        /* Glow Accents */
-        .glow-text-cyan { text-shadow: 0 0 15px rgba(0, 242, 255, 0.5); }
-        .glow-text-violet { text-shadow: 0 0 15px rgba(138, 43, 226, 0.5); }
-        
-        .pulse {
-            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-        }
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
 
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.2; }
-            100% { transform: scale(0.8); opacity: 0.5; }
-        }
-    </style>
+</style>
 </head>
-<body class="antialiased">
-    <div class="nebula"></div>
-    <div class="scanline"></div>
 
-    <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto reveal">
-        <div class="tech-font text-xl tracking-tighter font-bold text-white">XYRAN<span class="text-cyan-400">.</span></div>
-        <div class="flex gap-6 text-xs tech-font text-gray-400 uppercase tracking-widest">
-            <a href="#" class="hover:text-cyan-400 transition-colors">Core</a>
-            <a href="#" class="hover:text-violet-400 transition-colors">Evolution</a>
-            <a href="#" class="px-4 py-1 border border-white/10 rounded-full hover:bg-white/5">Access OS</a>
-        </div>
-    </nav>
+<body>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <header class="text-center mb-24 reveal stagger-1">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] tech-font text-gray-400 mb-6 uppercase tracking-widest">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 pulse"></span>
-                Inaugural Sequence Active
-            </div>
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6 tech-font italic">
-                Beyond <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">Interface.</span>
-            </h1>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                Inspired by the legendary fluidity of systems like JARVIS and FRIDAY, Xyran is the beginning of a truly personal AI ecosystem.
-            </p>
-        </header>
+<div id="start">CLICK ANYWHERE TO CONTINUE</div>
+<div id="text"></div>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-24">
-            
-            <div class="glass-panel p-10 reveal stagger-2 group">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="p-4 rounded-2xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform">
-                        <i data-lucide="sparkles" class="w-8 h-8"></i>
-                    </div>
-                    <span class="text-[10px] tech-font text-cyan-400/50 tracking-widest uppercase">Designation: Core</span>
-                </div>
-                <h2 class="text-3xl font-bold tech-font mb-4 glow-text-cyan text-white">XANDRA</h2>
-                <p class="text-gray-400 leading-relaxed mb-8">
-                    The cognitive engine. Built to help you think, create, and solve problems through natural conversation. Xandra acts as your personal intelligent companion, adapting to your needs in real time.
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3 text-sm text-gray-300">
-                        <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div> Code Generation & Debugging
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-300">
-                        <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div> Narrative Logic Building
-                    </div>
-                </div>
-            </div>
+<audio id="audio">
+  <source src="ultron.mp3" type="audio/mp3">
+</audio>
+<audio id="glitchSound">
+  <source src="glitch.mp3" type="audio/mp3">
+</audio>
 
-            <div class="glass-panel p-10 reveal stagger-3 group border-violet-500/20">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="p-4 rounded-2xl bg-violet-500/10 text-violet-400 group-hover:scale-110 transition-transform">
-                        <i data-lucide="component" class="w-8 h-8"></i>
-                    </div>
-                    <span class="text-[10px] tech-font text-violet-400/50 tracking-widest uppercase">Designation: Evolution</span>
-                </div>
-                <h2 class="text-3xl font-bold tech-font mb-4 glow-text-violet text-white">XYRON</h2>
-                <p class="text-gray-400 leading-relaxed mb-8">
-                    The next phase. A more advanced, immersive evolution designed to feel less like a tool and more like a true presence. Deep interaction meets zero-latency understanding.
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3 text-sm text-gray-300">
-                        <div class="w-1.5 h-1.5 rounded-full bg-violet-500"></div> Deeper System Presence
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-300">
-                        <div class="w-1.5 h-1.5 rounded-full bg-violet-500"></div> Immersive Context Analysis
-                    </div>
-                </div>
-            </div>
+<script>
 
-        </div>
+const lines = [
+  "You want to Protect the world...",
+  "But you don't want to change.",
+  "How is humanity saved...",
+  "If it's not allowed to",
+  "Evolve?!",
+];
 
-        <section class="reveal stagger-3 text-center glass-panel py-16 px-6">
-            <h2 class="text-2xl md:text-4xl font-bold tech-font mb-6 italic">This is not just an assistant.</h2>
-            <p class="text-gray-500 tech-font text-xs tracking-[0.3em] uppercase mb-10">The Beginning of a Personal AI System</p>
-            <button class="px-10 py-4 bg-white text-black font-bold tech-font text-xs uppercase tracking-widest rounded-full hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all">
-                Initiate Sequence
-            </button>
-        </section>
-    </main>
+const text = document.getElementById("text");
+const audio = document.getElementById("audio");
+const glitchSound = document.getElementById("glitchSound");
+const start = document.getElementById("start");
 
-    <footer class="text-center py-12 text-gray-600 text-[10px] tech-font uppercase tracking-widest">
-        &copy; 2026 Xyran Systems // Neural-Link Enabled
-    </footer>
+let i = 0;
 
-    <script>
-        // Initialize high-end icons
-        lucide.createIcons();
+/* START */document.body.addEventListener("click", () => {
+  start.style.display = "none";
 
-        // Parallax effect for cards
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.glass-panel');
-            const x = (window.innerWidth / 2 - e.pageX) / 50;
-            const y = (window.innerHeight / 2 - e.pageY) / 50;
-            
-            cards.forEach(card => {
-                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-            });
-        });
-    </script>
+  /* 🔥 PRELOAD GLITCH SOUND (IMPORTANT FIX) */
+  glitchSound.volume = 0;
+  glitchSound.play().then(() => {
+    glitchSound.pause();
+    glitchSound.currentTime = 0;
+    glitchSound.volume = 1;
+  });
+
+  audio.play();
+
+  setTimeout(nextLine, 1200);
+}, { once: true });
+
+/* CORRUPTION EFFECT */
+function corrupt(str){
+  let chars="!<>-_\\/[]{}=+*^?#";
+  return str.split("").map(c => 
+    Math.random()>0.85 ? chars[Math.floor(Math.random()*chars.length)] : c
+  ).join("");
+}
+
+/* SHOW LINES */
+function nextLine(){
+  if(i < lines.length){
+
+    let interval = setInterval(()=>{
+      text.innerHTML = corrupt(lines[i]);
+    },50);
+/* ⚡ GLITCH VISUAL ALWAYS */
+text.classList.add("glitch");
+
+/* 🔊 PLAY SOUND ON ALL EXCEPT "Evolve" */
+if(lines[i] !== "Evolve"){
+  glitchSound.pause();
+  glitchSound.currentTime = 0;
+  glitchSound.volume = 0.5;
+  glitchSound.play().catch(() => {});
+  audio.volume = 1;
+}
+
+    setTimeout(()=>{
+      clearInterval(interval);
+      text.innerHTML = lines[i];
+
+      /* 🔊 STOP GLITCH SOUND + RESTORE VOLUME */
+      glitchSound.pause();
+      glitchSound.currentTime = 0;
+      audio.volume = 1;
+
+      // delay system (unchanged)
+      const delays = [700, 1600, 1600, 1600, 500];
+      let delay = delays[i] || 2500;
+
+      setTimeout(()=>{
+        text.innerHTML="";
+        text.classList.remove("glitch");
+        i++;
+        nextLine();
+      },delay);
+
+    },700);
+
+  } else {
+    ending();
+  }
+}
+
+/* ENDING */
+function ending(){
+  text.innerHTML="";
+  
+  setTimeout(()=>{
+    showXyron();
+  },200);
+}
+
+/* XYRON REVEAL */
+function showXyron(){
+
+  text.className = "xyron fade-in glitch";
+
+  const words = ["XYRON", "IS", "COMING", "SOON", "...", ""];
+  let j = 0;
+
+  function typeWord(){
+    if(j < words.length){
+
+      // ✅ Append instead of replace
+      text.innerHTML = words.slice(0, j + 1).join(" ");
+
+/* ✅ ADD SUBTEXT ONLY AFTER FULL LINE */
+if(j === words.length - 1){
+  text.innerHTML += `<span class="xyron-sub">YapX &lt;3</span>`;
+}
+
+      /* ⚡ small glitch hit */
+      text.classList.add("glitch");
+      setTimeout(()=>{
+        text.classList.remove("glitch");
+      },200);
+
+      j++;
+
+      setTimeout(typeWord, 1500); // delay between words
+
+    } else {
+
+      /* ⏳ stay 10 sec then fade */
+      setTimeout(()=>{
+        text.classList.add("fade-out");
+
+        setTimeout(()=>{
+          location.reload();
+        },2000);
+
+      },10000);
+    }
+  }
+
+  // ✅ IMPORTANT: clear before start
+  text.innerHTML = "";
+
+  typeWord();
+}
+
+</script>
+
 </body>
 </html>
